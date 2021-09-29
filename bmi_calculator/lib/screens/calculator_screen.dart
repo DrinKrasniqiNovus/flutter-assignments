@@ -14,6 +14,8 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  int weight = 60;
+  int age = 20;
   double _currentSliderValue = 20;
   @override
   Widget build(BuildContext context) {
@@ -82,43 +84,108 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               children: [
                 SizedBox(
                   width: 350,
-                  child: Card(
-                    child: Slider(
-                      value: _currentSliderValue,
-                      min: 0,
-                      max: 250,
-                      divisions: 250,
-                      label: _currentSliderValue.round().toString(),
-                      onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue = value;
-                        });
-                      },
-                    ),
+                  child: Column(
+                    children: [
+                      Text(
+                        '$_currentSliderValue',
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      Slider(
+                        value: _currentSliderValue,
+                        min: 0,
+                        max: 250,
+                        divisions: 250,
+                        label: _currentSliderValue.round().toString(),
+                        onChanged: (double value) {
+                          setState(() {
+                            _currentSliderValue = value;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 150,
-                width: 150,
-                child: Card(
-                  child: Text('Weight'),
+          Expanded(
+              child: Container(
+            width: 400,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('WEIGHT'),
+                        Text(weight.toString()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              icon: Icon(Icons.remove_circle),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              icon: Icon(Icons.add_circle),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                height: 150,
-                width: 150,
-                child: Card(
-                  child: Text('Age'),
-                ),
-              ),
-            ],
-          ),
+                Expanded(
+                  child: Card(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('AGE'),
+                              Text(age.toString()),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        age--;
+                                      });
+                                    },
+                                    icon: Icon(Icons.remove_circle),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        age++;
+                                      });
+                                    },
+                                    icon: Icon(Icons.add_circle),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )),
           Expanded(
             child: Align(
               alignment: FractionalOffset.bottomCenter,
