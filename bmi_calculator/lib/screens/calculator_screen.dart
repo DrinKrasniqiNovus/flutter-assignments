@@ -1,4 +1,3 @@
-import 'package:bmi_calculator/main.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorScreen extends StatefulWidget {
@@ -9,6 +8,7 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  double _currentSliderValue = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,157 +22,88 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.male,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Male ',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.female,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Female ',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 50,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'Height',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Weight',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Number',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  )
-                ],
+              Container(
+                height: 150,
+                width: 150,
+                child: Card(
+                  child: FlatButton(
+                      onPressed: () {},
+                      child: Column(
+                        children: [Icon(Icons.male), Text('Male')],
+                      )),
+                ),
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Weight',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Number',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              )
+              Container(
+                height: 150,
+                width: 150,
+                child: Card(
+                  child: FlatButton(
+                      onPressed: () {},
+                      child: Column(
+                        children: [Icon(Icons.female), Text('Female')],
+                      )),
+                ),
+              ),
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                onPressed: () => {},
-                child: Text(
-                  '-',
+              SizedBox(
+                width: 350,
+                child: Card(
+                  child: Slider(
+                    value: _currentSliderValue,
+                    min: 0,
+                    max: 100,
+                    divisions: 5,
+                    label: _currentSliderValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    },
+                  ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () => {},
-                child: Text('+'),
-              ),
-              ElevatedButton(
-                onPressed: () => {},
-                child: Text(
-                  '-',
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () => {},
-                child: Text('+'),
               ),
             ],
           ),
-          Container(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text('CALCULATE'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                child: Card(
+                  child: Text('Weight'),
+                ),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                child: Card(
+                  child: Text('Age'),
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: MaterialButton(
+                height: 60,
+                minWidth: 350,
+                color: Theme.of(context).accentColor,
+                onPressed: () => {},
+                child: Text(
+                  'Calculate',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
