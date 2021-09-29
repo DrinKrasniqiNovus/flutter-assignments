@@ -17,9 +17,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(10, 11, 34, 1.0),
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
-      routes: {
-        'route': (ctx) => ResultScreen(),
-      },
     );
   }
 }

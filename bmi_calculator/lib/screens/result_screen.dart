@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import './calculator_screen.dart';
 
 class ResultScreen extends StatelessWidget {
+  double height;
+  int weight;
+  int age;
+  double result;
+  void calculation() {
+    result = height / weight / age;
+  }
+
+  ResultScreen(this.height, this.weight, this.age, this.result);
   static const routeName = 'route';
   @override
   Widget build(BuildContext context) {
@@ -41,7 +51,7 @@ class ResultScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '180',
+                    '',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 50,
