@@ -1,4 +1,10 @@
+import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:flutter/material.dart';
+
+enum Sex {
+  male,
+  female,
+}
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({Key? key}) : super(key: key);
@@ -22,53 +28,77 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                height: 150,
-                width: 150,
-                child: Card(
-                  child: FlatButton(
-                      onPressed: () {},
-                      child: Column(
-                        children: [Icon(Icons.male), Text('Male')],
-                      )),
-                ),
-              ),
-              Container(
-                height: 150,
-                width: 150,
-                child: Card(
-                  child: FlatButton(
-                      onPressed: () {},
-                      child: Column(
-                        children: [Icon(Icons.female), Text('Female')],
-                      )),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 350,
-                child: Card(
-                  child: Slider(
-                    value: _currentSliderValue,
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _currentSliderValue = value;
-                      });
-                    },
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: 150,
+                  width: 150,
+                  child: Card(
+                    child: FlatButton(
+                        color: Theme.of(context).primaryColor,
+                        onPressed: () {},
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.male,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Male',
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
+                        )),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  height: 150,
+                  width: 150,
+                  child: Expanded(
+                    child: FlatButton(
+                        color: Theme.of(context).primaryColor,
+                        onPressed: () {},
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.female,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Female',
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
+                        )),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 350,
+                  child: Card(
+                    child: Slider(
+                      value: _currentSliderValue,
+                      min: 0,
+                      max: 250,
+                      divisions: 250,
+                      label: _currentSliderValue.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          _currentSliderValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -96,7 +126,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 height: 60,
                 minWidth: 350,
                 color: Theme.of(context).accentColor,
-                onPressed: () => {},
+                onPressed: () => {Navigator.of(context).pushNamed('route')},
                 child: Text(
                   'Calculate',
                   style: TextStyle(color: Colors.white),
