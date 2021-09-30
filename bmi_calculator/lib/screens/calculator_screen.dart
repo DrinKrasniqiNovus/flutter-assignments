@@ -45,7 +45,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                           });
                         },
                         color: selectedSex == Sex.male
-                            ? Colors.red
+                            ? Theme.of(context).accentColor
                             : Theme.of(context).primaryColor,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +74,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                           });
                         },
                         color: selectedSex == Sex.female
-                            ? Colors.red
+                            ? Theme.of(context).accentColor
                             : Theme.of(context).primaryColor,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -266,7 +266,7 @@ class CalculatorScreenState extends State<CalculatorScreen> {
             child: Align(
               alignment: FractionalOffset.bottomCenter,
               child: MaterialButton(
-                height: 60,
+                height: 80,
                 minWidth: 350,
                 color: Theme.of(context).accentColor,
                 onPressed: () {

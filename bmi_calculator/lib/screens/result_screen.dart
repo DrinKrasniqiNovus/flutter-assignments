@@ -1,4 +1,6 @@
+import 'package:bmi_calculator/screens/calculator_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'dart:math';
 
 class ResultScreen extends StatelessWidget {
@@ -31,7 +33,7 @@ class ResultScreen extends StatelessWidget {
       color = Colors.yellow;
     } else if (bmi >= 30.0) {
       ratingText = 'Obese';
-      comment = 'U seem to be obese, eat more healthy and workout';
+      comment = ' Obese, eat more healthy and workout';
       color = Colors.red;
     }
 
@@ -67,45 +69,67 @@ class ResultScreen extends StatelessWidget {
               )
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '${ratings[0]}',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    calculation().toStringAsFixed(1),
+          Card(
+            color: Theme.of(context).primaryColor,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(50),
+                  child: Text(
+                    '${ratings[0]}',
+                    style: TextStyle(
+                        color: ratings[2] as Color,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        calculation().toStringAsFixed(1),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 80,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(60),
+                  child: Text(
+                    '${ratings[1]}',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 50,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '${ratings[1]}',
-                style: TextStyle(
-                    color: ratings[2] as Color,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              )
-            ],
+          Expanded(
+            child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: MaterialButton(
+                height: 80,
+                minWidth: 350,
+                color: Theme.of(context).accentColor,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CalculatorScreen()),
+                  );
+                },
+                child: Text(
+                  'Re-Calculate',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ),
         ],
       ),
