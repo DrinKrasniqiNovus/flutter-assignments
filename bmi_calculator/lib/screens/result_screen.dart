@@ -1,6 +1,5 @@
-import 'package:bmi_calculator/screens/calculator_screen.dart';
 import 'package:flutter/material.dart';
-
+import '../widgets/re_calculate_button.dart';
 import 'dart:math';
 
 class ResultScreen extends StatelessWidget {
@@ -111,26 +110,7 @@ class ResultScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: MaterialButton(
-                height: 80,
-                minWidth: 350,
-                color: Theme.of(context).accentColor,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CalculatorScreen()),
-                  );
-                },
-                child: Text(
-                  'Re-Calculate',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ),
+          ReCalculateButton(),
         ],
       ),
     );

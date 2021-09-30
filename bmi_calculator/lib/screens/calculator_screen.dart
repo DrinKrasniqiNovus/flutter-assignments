@@ -1,6 +1,7 @@
 import 'package:bmi_calculator/main.dart';
 import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:flutter/material.dart';
+import '../widgets/calculate_button.dart';
 
 enum Sex {
   male,
@@ -262,32 +263,10 @@ class CalculatorScreenState extends State<CalculatorScreen> {
               ],
             ),
           )),
-          Expanded(
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: MaterialButton(
-                height: 80,
-                minWidth: 350,
-                color: Theme.of(context).accentColor,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResultScreen(
-                        _currentSliderValue,
-                        weight,
-                        age,
-                      ),
-                    ),
-                  );
-                },
-                child: Text(
-                  'Calculate',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ),
+          CalculateButton(
+              currentSliderValue: _currentSliderValue,
+              weight: weight,
+              age: age),
         ],
       ),
     );
