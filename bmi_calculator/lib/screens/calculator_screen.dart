@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/main.dart';
 import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,13 +8,12 @@ enum Sex {
 }
 
 class CalculatorScreen extends StatefulWidget {
-  const CalculatorScreen({Key? key}) : super(key: key);
-
   @override
-  _CalculatorScreenState createState() => _CalculatorScreenState();
+  CalculatorScreenState createState() => CalculatorScreenState();
 }
 
-class _CalculatorScreenState extends State<CalculatorScreen> {
+class CalculatorScreenState extends State<CalculatorScreen> {
+  Sex selectedSex;
   int weight = 60;
   int age = 20;
   double _currentSliderValue = 120;
@@ -35,17 +35,25 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  height: 150,
-                  width: 150,
+                  height: 200,
+                  width: 180,
                   child: Card(
                     child: FlatButton(
-                        color: Theme.of(context).primaryColor,
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            selectedSex = Sex.male;
+                          });
+                        },
+                        color: selectedSex == Sex.male
+                            ? Colors.red
+                            : Theme.of(context).primaryColor,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.male,
                               color: Colors.white,
+                              size: 50,
                             ),
                             Text(
                               'Male',
@@ -56,17 +64,25 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   ),
                 ),
                 Container(
-                  height: 150,
-                  width: 150,
-                  child: Expanded(
+                  height: 200,
+                  width: 180,
+                  child: Card(
                     child: FlatButton(
-                        color: Theme.of(context).primaryColor,
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            selectedSex = Sex.female;
+                          });
+                        },
+                        color: selectedSex == Sex.female
+                            ? Colors.red
+                            : Theme.of(context).primaryColor,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.female,
                               color: Colors.white,
+                              size: 50,
                             ),
                             Text(
                               'Female',
@@ -90,9 +106,30 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(bottom: 20),
-                          child: Text(
-                            '$_currentSliderValue cm',
-                            style: TextStyle(color: Colors.white, fontSize: 30),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Height',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '$_currentSliderValue ',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    'cm',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                         Slider(
@@ -118,6 +155,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           Expanded(
               child: Container(
             width: 400,
+            height: 200,
             child: Row(
               children: [
                 Expanded(
@@ -128,37 +166,40 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       children: [
                         Text(
                           'WEIGHT',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.grey),
                         ),
                         Text(
                           weight.toString(),
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.remove_circle,
-                                color: Colors.grey,
-                              ),
-                            ),
+                                onPressed: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.remove_circle,
+                                  color: Colors.grey,
+                                ),
+                                iconSize: 40),
                             IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.add_circle,
-                                color: Colors.grey,
-                              ),
-                            ),
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.grey,
+                                ),
+                                iconSize: 40),
                           ],
                         )
                       ],
@@ -176,11 +217,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             children: [
                               Text(
                                 'AGE',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.grey),
                               ),
                               Text(
                                 age.toString(),
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -192,19 +236,20 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                       });
                                     },
                                     icon: Icon(Icons.remove_circle),
+                                    iconSize: 40,
                                     color: Colors.grey,
                                   ),
                                   IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        age++;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.add_circle,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
+                                      onPressed: () {
+                                        setState(() {
+                                          age++;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.add_circle,
+                                        color: Colors.grey,
+                                      ),
+                                      iconSize: 40),
                                 ],
                               )
                             ],

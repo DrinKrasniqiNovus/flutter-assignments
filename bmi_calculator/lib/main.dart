@@ -16,21 +16,17 @@ class MyApp extends StatelessWidget {
         accentColor: const Color.fromRGBO(235, 21, 85, 1.0),
         backgroundColor: const Color.fromRGBO(10, 11, 34, 1.0),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return CalculatorScreen();
