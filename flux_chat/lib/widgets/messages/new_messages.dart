@@ -21,8 +21,9 @@ class _NewMessageState extends State<NewMessage> {
   void _sendMessage() async {
     FocusScope.of(context).unfocus();
     final user = await FirebaseAuth.instance.currentUser();
-    bool _isGoogle = await isGoogle();
-    if (_isGoogle) {
+
+    if (user.isEmailVerified) {
+      print('i am in google');
       Firestore.instance.collection('chat').add({
         'text': _enteredMessage,
         'createdAt': Timestamp.now(),
@@ -31,6 +32,7 @@ class _NewMessageState extends State<NewMessage> {
         'userImage': user.photoUrl,
       });
     } else {
+      print('i am in e');
       final userData =
           await Firestore.instance.collection('users').document(user.uid).get();
       Firestore.instance.collection('chat').add({
