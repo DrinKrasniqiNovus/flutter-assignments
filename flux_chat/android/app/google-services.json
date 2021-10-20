@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "251920533634",
+    "project_id": "flux-c",
+    "storage_bucket": "flux-c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251920533634:android:c881b4d16e238d0c45cc9b",
+        "android_client_info": {
+          "package_name": "com.example.flux_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251920533634-9lp9ern148a5ribr964nf9ni0kied1er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQujuDzUffggqFRJ8zXrwINQfwNjcburo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251920533634-9lp9ern148a5ribr964nf9ni0kied1er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
