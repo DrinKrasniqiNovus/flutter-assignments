@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/tiktok_replica/BuildConfig.java
- com.example.tiktok_replica.BuildConfig
