@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble(this.message, this.userName, this.userImage, this.isMe,this.image,
+  MessageBubble(
+      this.message, this.userName, this.userImage, this.isMe, this.image,
       {this.key});
 
   final Key key;
@@ -49,7 +50,7 @@ class MessageBubble extends StatelessWidget {
                           : Theme.of(context).accentTextTheme.title.color,
                     ),
                   ),
-                  Image.network(image),
+                  if (image.isNotEmpty) Image.network(image),
                   Text(
                     message,
                     style: TextStyle(

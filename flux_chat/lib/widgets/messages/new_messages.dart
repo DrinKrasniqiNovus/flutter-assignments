@@ -14,8 +14,11 @@ class _NewMessageState extends State<NewMessage> {
   final _controller = new TextEditingController();
   File _image;
   var _enteredMessage = '';
+
   void _pickedImage(File image) {
-    _image = image;
+    setState(() {
+      _image = image;
+    });
   }
 
   Future<bool> isGoogle() async {
@@ -24,21 +27,24 @@ class _NewMessageState extends State<NewMessage> {
   }
 
   void _sendMessage() async {
-    final ref = FirebaseStorage.instance
-        .ref()
-        .child('sent_image')
-        .child(Timestamp.now().toString() + '.jpg');
-
-    await ref.putFile(_image).onComplete;
-    final url = await ref.getDownloadURL();
-
     FocusScope.of(context).unfocus();
     final user = await FirebaseAuth.instance.currentUser();
+    String url = '';
+    if (_image != null) {
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('sent_image')
+          .child(Timestamp.now().toString() + '.jpg');
+
+      await ref.putFile(_image).onComplete;
+
+      url = await ref.getDownloadURL();
+    }
 
     if (user.isEmailVerified) {
       print('i am in google');
       Firestore.instance.collection('chat').add({
-        'image': url,
+        'image': url == null ? null : url,
         'text': _enteredMessage,
         'createdAt': Timestamp.now(),
         'userId': user.uid,
@@ -49,7 +55,7 @@ class _NewMessageState extends State<NewMessage> {
       final userData =
           await Firestore.instance.collection('users').document(user.uid).get();
       Firestore.instance.collection('chat').add({
-        'image': url,
+        'image': url == null ? null : url,
         'text': _enteredMessage,
         'createdAt': Timestamp.now(),
         'userId': user.uid,
@@ -57,7 +63,9 @@ class _NewMessageState extends State<NewMessage> {
         'userImage': userData['image_url'],
       });
     }
-
+    setState(() {
+      _image = null;
+    });
     _controller.clear();
   }
 
@@ -79,7 +87,7 @@ class _NewMessageState extends State<NewMessage> {
               },
             ),
           ),
-          UserImagePicker2(_pickedImage),
+          UserImagePicker2(_pickedImage, _image != null),
           IconButton(
             color: Theme.of(context).primaryColor,
             icon: Icon(Icons.send),

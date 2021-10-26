@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserImagePicker2 extends StatefulWidget {
-  UserImagePicker2(this.imagePickFn);
+  bool isShowing;
+  UserImagePicker2(this.imagePickFn, this.isShowing);
   final void Function(File pickedImage) imagePickFn;
   @override
   _UserImagePicker2State createState() => _UserImagePicker2State();
@@ -12,6 +13,7 @@ class UserImagePicker2 extends StatefulWidget {
 
 class _UserImagePicker2State extends State<UserImagePicker2> {
   File _pickedImage;
+
   void _pickImage() async {
     final pickedImageFile = await ImagePicker.pickImage(
       source: ImageSource.camera,
@@ -33,16 +35,17 @@ class _UserImagePicker2State extends State<UserImagePicker2> {
           child: FlatButton.icon(
             textColor: Theme.of(context).primaryColor,
             onPressed: _pickImage,
-            icon: Icon(Icons.image),
+            icon: Icon(Icons.camera_alt_outlined),
             label: Text(''),
           ),
         ),
-        CircleAvatar(
-          radius: 20,
-          backgroundColor: Colors.grey,
-          backgroundImage:
-              _pickedImage != null ? FileImage(_pickedImage) : null,
-        ),
+        if (widget.isShowing)
+          CircleAvatar(
+            radius: 20,
+            backgroundColor: Colors.grey,
+            backgroundImage:
+                _pickedImage != null ? FileImage(_pickedImage) : null,
+          ),
       ],
     );
   }
