@@ -24,7 +24,11 @@ class EditProfileButton extends StatelessWidget {
             label: Text('Edit Profile'),
             icon: Icon(Icons.edit),
             style: ElevatedButton.styleFrom(
-                fixedSize: const Size(240, 30), primary: Colors.black),
+                fixedSize: const Size(
+                  240,
+                  30,
+                ),
+                primary: Colors.grey[700]),
           ),
         ),
       ),

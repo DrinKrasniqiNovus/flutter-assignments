@@ -13,6 +13,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Edit Profile'),
         centerTitle: true,
@@ -42,6 +43,7 @@ class _EditProfileState extends State<EditProfile> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                   TextButton(

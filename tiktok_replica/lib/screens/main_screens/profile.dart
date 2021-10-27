@@ -13,6 +13,7 @@ class ProfileScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           title: Text(
             'My Profile',
@@ -42,14 +43,14 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 50,
               child: AppBar(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.grey[900],
                 bottom: TabBar(
-                  indicatorColor: Colors.black,
+                  indicatorColor: Colors.white,
                   tabs: [
                     Tab(
                       icon: Icon(
                         Icons.grid_view,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     Tab(

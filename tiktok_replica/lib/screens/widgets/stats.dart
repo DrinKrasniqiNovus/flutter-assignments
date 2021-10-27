@@ -15,14 +15,13 @@ class Stats extends StatelessWidget {
             Text(
               '24',
               style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             Text('Following',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
+                    fontWeight: FontWeight.bold, color: Colors.white)),
           ],
         ),
         Column(
@@ -30,15 +29,14 @@ class Stats extends StatelessWidget {
             Text(
               '12',
               style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             Text(
               'Followers',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ],
         ),
@@ -47,15 +45,14 @@ class Stats extends StatelessWidget {
             Text(
               '10',
               style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
             Text(
               'Likes',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ],
         )
