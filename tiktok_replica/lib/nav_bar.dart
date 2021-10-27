@@ -26,15 +26,15 @@ class _NavBarState extends State<NavBar> {
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined, size: 30),
+              icon: Icon(Icons.home, size: 30),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined, size: 30),
+              icon: Icon(Icons.add_box, size: 30),
               label: 'Add Video',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined, size: 30),
+              icon: Icon(Icons.person, size: 30),
               label: 'Account',
             ),
           ],

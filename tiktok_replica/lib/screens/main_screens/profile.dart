@@ -44,17 +44,18 @@ class ProfileScreen extends StatelessWidget {
               child: AppBar(
                 backgroundColor: Colors.white,
                 bottom: TabBar(
+                  indicatorColor: Colors.black,
                   tabs: [
                     Tab(
                       icon: Icon(
                         Icons.grid_view,
-                        color: Colors.grey,
+                        color: Colors.black,
                       ),
                     ),
                     Tab(
                       icon: Icon(
-                        Icons.favorite_border,
-                        color: Colors.grey,
+                        Icons.favorite,
+                        color: Colors.red,
                       ),
                     ),
                   ],

@@ -12,14 +12,20 @@ class EditProfileButton extends StatelessWidget {
       margin: EdgeInsets.only(top: 10),
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => EditProfile()),
-            );
-          },
-          child: Text('EditProfile'),
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: ElevatedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfile()),
+              );
+            },
+            label: Text('Edit Profile'),
+            icon: Icon(Icons.edit),
+            style: ElevatedButton.styleFrom(
+                fixedSize: const Size(240, 30), primary: Colors.black),
+          ),
         ),
       ),
     );

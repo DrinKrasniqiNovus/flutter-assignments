@@ -32,28 +32,40 @@ class _EditProfileState extends State<EditProfile> {
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Name'),
-                TextButton(
-                  onPressed: () {},
-                  child: Text('Change name'),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Name',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('Change name'),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Username(),
-                TextButton(
-                  onPressed: () {},
-                  child: Text('Change username'),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Username(),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('Change username'),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

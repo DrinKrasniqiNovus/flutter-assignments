@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tiktok_replica/nav_bar.dart';
+
 import 'package:tiktok_replica/screens/widgets/build_email.dart';
 import 'package:tiktok_replica/screens/widgets/forget_password.dart';
 import 'package:tiktok_replica/screens/widgets/login_button.dart';
