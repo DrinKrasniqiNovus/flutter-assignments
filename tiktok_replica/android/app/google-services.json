@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832982487747",
+    "project_id": "novus-tiktok",
+    "storage_bucket": "novus-tiktok.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832982487747:android:b6272544f3551a6c568876",
+        "android_client_info": {
+          "package_name": "com.example.tiktok_replica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832982487747-2sfl2rssg81fsehf4falbivi1pg7vi98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcOWogLSIDxkY_S324MAZm4RPx9WNiL1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832982487747-2sfl2rssg81fsehf4falbivi1pg7vi98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

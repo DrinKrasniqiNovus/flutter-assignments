@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_replica/screens/widgets/name.dart';
 import 'package:tiktok_replica/screens/widgets/profile_picure.dart';
 import 'package:tiktok_replica/screens/widgets/username.dart';
 
@@ -35,23 +36,7 @@ class _EditProfileState extends State<EditProfile> {
             margin: EdgeInsets.only(top: 20),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Name',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text('Change name'),
-                  ),
-                ],
-              ),
+              child: Name(),
             ),
           ),
           Container(
@@ -75,3 +60,4 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 }
+
