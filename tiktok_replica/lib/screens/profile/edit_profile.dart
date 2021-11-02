@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_replica/screens/widgets/name.dart';
-import 'package:tiktok_replica/screens/widgets/profile_picure.dart';
+import 'package:tiktok_replica/screens/widgets/profile_picture.dart';
 import 'package:tiktok_replica/screens/widgets/username.dart';
+
+import 'change_username.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -23,15 +25,6 @@ class _EditProfileState extends State<EditProfile> {
       body: Column(
         children: [
           ProfilePicture(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text('Change Photo'),
-              ),
-            ],
-          ),
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Padding(
@@ -48,7 +41,14 @@ class _EditProfileState extends State<EditProfile> {
                 children: [
                   Username(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangeUsername(),
+                        ),
+                      );
+                    },
                     child: Text('Change username'),
                   ),
                 ],
@@ -60,4 +60,3 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 }
-

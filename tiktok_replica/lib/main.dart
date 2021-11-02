@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiktok_replica/nav_bar.dart';
 import 'package:tiktok_replica/screens/auth/auth_screen.dart';
-import 'package:tiktok_replica/screens/main_screens/camera.dart';
-import 'package:tiktok_replica/screens/main_screens/home_screen.dart';
+import 'package:tiktok_replica/screens/loading_screen.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +51,9 @@ class _MyAppState extends State<MyApp> {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return HomeScreen();
+        return new MediaQuery(
+            data: new MediaQueryData(),
+            child: new MaterialApp(home: new LoadingScreen()));
       },
     );
   }

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../widgets/username.dart';
-import '../widgets/profile_picure.dart';
+import '../widgets/profile_picture.dart';
 import '../widgets/stats.dart';
 import '../widgets/edit_profile_button.dart';
 import '../widgets/tab_bar_items.dart';
