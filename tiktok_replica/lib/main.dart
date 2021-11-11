@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'Flutter Demo  ',
             theme: ThemeData(
               primarySwatch: Colors.pink,
             ),

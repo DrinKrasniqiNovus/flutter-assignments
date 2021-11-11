@@ -22,7 +22,8 @@ class _ChangeUsernameState extends State<ChangeUsername> {
                   content: Text('U changed your Username'),
                 ),
               ),
-              Navigator.pop(context)
+              Navigator.pop(context),
+              FocusScope.of(context).unfocus(),
             })
         .catchError((error) => print('Failed: $error'));
   }
@@ -32,6 +33,7 @@ class _ChangeUsernameState extends State<ChangeUsername> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Change Username'),
       ),
       body: Column(

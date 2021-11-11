@@ -52,6 +52,7 @@ class _AuthScreenState extends State<AuthScreen> {
           'name': name,
           'email': email,
           'imageUrl': '',
+          'uid': authResult.user!.uid,
         });
       }
     } on PlatformException catch (err) {

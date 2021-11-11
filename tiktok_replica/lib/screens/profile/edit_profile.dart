@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_replica/screens/widgets/name.dart';
-import 'package:tiktok_replica/screens/widgets/profile_picture.dart';
-import 'package:tiktok_replica/screens/widgets/username.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tiktok_replica/screens/getters/name.dart';
+import 'package:tiktok_replica/screens/getters/profile_picture.dart';
+import 'package:tiktok_replica/screens/widgets/user_image_picker.dart';
+import 'package:tiktok_replica/screens/getters/username.dart';
 
 import 'change_username.dart';
 
@@ -13,6 +15,11 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  XFile? _userImageFile;
+  void _pickedImage(XFile image) {
+    _userImageFile = image;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,7 @@ class _EditProfileState extends State<EditProfile> {
       ),
       body: Column(
         children: [
-          ProfilePicture(),
+          UserImagePicker(_pickedImage),
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Padding(

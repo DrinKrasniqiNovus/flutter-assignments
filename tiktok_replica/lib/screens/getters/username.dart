@@ -24,7 +24,7 @@ class _UsernameState extends State<Username> {
   Widget build(BuildContext context) {
     getUsername();
     return Text(
-      _username,
+      '@' + _username,
       style: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,

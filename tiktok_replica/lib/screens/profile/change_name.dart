@@ -33,7 +33,8 @@ class _ChangeNameState extends State<ChangeName> {
                   content: Text('U changed your name'),
                 ),
               ),
-              Navigator.pop(context)
+              Navigator.pop(context),
+              FocusScope.of(context).unfocus(),
             })
         .catchError((error) => print('Failed: $error'));
   }
@@ -43,6 +44,7 @@ class _ChangeNameState extends State<ChangeName> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: Text('Change name'),
       ),
       body: Container(

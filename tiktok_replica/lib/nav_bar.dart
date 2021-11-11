@@ -12,6 +12,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  void pickVideo() {}
   int selectedPage = 0;
   final _pageOptions = [
     HomeScreen(),
