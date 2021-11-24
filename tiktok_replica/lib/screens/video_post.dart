@@ -1,13 +1,11 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:tiktok_replica/screens/favorite_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoList extends StatefulWidget {
-  const VideoList({Key? key}) : super(key: key);
-
   @override
   _VideoListState createState() => _VideoListState();
 }
@@ -16,7 +14,10 @@ class _VideoListState extends State<VideoList> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: FirebaseFirestore.instance.collection('videos').get(),
+      future: FirebaseFirestore.instance
+          .collection('videos')
+          .orderBy('timestamp')
+          .get(),
       builder: (ctx, futureSnapshot) {
         if (futureSnapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -32,29 +33,50 @@ class _VideoListState extends State<VideoList> {
                 );
               }
               final userDocs = userSnapshot.data!.docs;
+
               return PageView.builder(
                 scrollDirection: Axis.vertical,
                 itemBuilder: (ctx, index) {
+                  VideoPlayerController _controller =
+                      VideoPlayerController.network(
+                          userDocs[index]['videoUrl']);
                   VideoPlayer(
-                    VideoPlayerController.network(userDocs[1]['videoUrl'])
+                    _controller
                       ..initialize()
                       ..pause(),
                   );
+
                   return Stack(children: [
                     Positioned.fill(
                       child: AspectRatio(
-                        aspectRatio: VideoPlayerController.network(
-                                userDocs[index]['videoUrl'])
-                            .value
-                            .aspectRatio,
+                        aspectRatio: _controller.value.aspectRatio,
                         child: VideoPlayer(
-                          VideoPlayerController.network(
-                              userDocs[index]['videoUrl'])
+                          _controller
                             ..initialize()
-                            ..play(),
+                            ..play()
+                            ..setLooping(true),
                         ),
                       ),
                     ),
+                    Positioned(
+                        child: Center(
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          // Wrap the play or pause in a call to `setState`. This ensures the
+                          // correct icon is shown.
+
+                          // If the video is playing, pause it.
+                          if (_controller.value.isPlaying) {
+                            _controller.pause();
+                          } else {
+                            // If the video is paused, play it.
+                            _controller.play();
+                          }
+                        },
+                        // Display the correct icon depending on the state of the player.
+                        child: Icon(Icons.play_arrow),
+                      ),
+                    )),
                     Positioned(
                       bottom: 50,
                       left: 25,
@@ -78,17 +100,7 @@ class _VideoListState extends State<VideoList> {
                                 userDocs[index]['author']['imageUrl']),
                             radius: 30,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.favorite_border_outlined,
-                                size: 35,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                          FavoriteButton(userDocs[index]['videoUrl'])
                         ],
                       ),
                     ),
