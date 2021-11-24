@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tiktok_replica/screens/main_screens/home_screen.dart';
+
 import 'package:video_player/video_player.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -45,7 +45,6 @@ class _CameraScreenState extends State<CameraScreen> {
               ..initialize().then((_) async {
                 setState(() {});
                 var userId = FirebaseAuth.instance.currentUser!.uid;
-                // widget.imagePickFn(_pickedVideo!);
                 final ref = FirebaseStorage.instance
                     .ref()
                     .child('videos')
@@ -56,7 +55,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     .collection('users')
                     .doc(userId)
                     .get();
-                ;
+
                 final url = await ref.getDownloadURL();
                 await FirebaseFirestore.instance
                     .collection('videos')
@@ -70,8 +69,9 @@ class _CameraScreenState extends State<CameraScreen> {
                   'timestamp': Timestamp.now(),
                   'videoUrl': url,
                 });
+                print(url + 'ssssss');
 
-                videoPlayerController!.play(); //.pause() for pausing
+                videoPlayerController!.play();
                 videoPlayerController!.setVolume(0.0);
               });
         setState(() {
@@ -80,11 +80,6 @@ class _CameraScreenState extends State<CameraScreen> {
         print(videoPlayerController);
       }
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -99,19 +94,14 @@ class _CameraScreenState extends State<CameraScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              // Wrap the play or pause in a call to `setState`. This ensures the
-              // correct icon is shown.
               setState(() {
-                // If the video is playing, pause it.
                 if (videoPlayerController!.value.isPlaying) {
                   videoPlayerController!.pause();
                 } else {
-                  // If the video is paused, play it.
                   videoPlayerController!.play();
                 }
               });
             },
-            // Display the correct icon depending on the state of the player.
             icon: Icon(
               videoPlayerController!.value.isPlaying
                   ? Icons.pause
@@ -120,7 +110,7 @@ class _CameraScreenState extends State<CameraScreen> {
           ),
         ],
       ),
-      body: videoPlayerController == null
+      body: videoPlayerController == ''
           ? Center(child: Text('No videos Selcted'))
           : VideoPlayer(videoPlayerController!),
     );
