@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tiktok_replica/screens/profile/videos/favorite.dart';
 import 'package:tiktok_replica/screens/getters/posts.dart';
+import '../profile/videos/my_videos.dart';
 
 class TabBarItems extends StatefulWidget {
   @override
@@ -9,8 +11,9 @@ class TabBarItems extends StatefulWidget {
 }
 
 class _TabBarItemsState extends State<TabBarItems> {
+  List myFavs = [];
   var items = [];
-
+  bool isInit = true;
   Future<void> getVideos() async {
     final user = FirebaseAuth.instance.currentUser!.uid;
     QuerySnapshot query = await FirebaseFirestore.instance
@@ -21,7 +24,6 @@ class _TabBarItemsState extends State<TabBarItems> {
     if (query.docs.length < 0) {
       return;
     } else if (query.docs.length > 0) {
-      print('tttttttttttttttttttttttttttttt');
       var myData = query.docs
           .map((e) => Post(
               id: e.id,
@@ -35,7 +37,6 @@ class _TabBarItemsState extends State<TabBarItems> {
               timeStamp: e['timestamp'],
               videoUrl: e['videoUrl']))
           .toList();
-      print(myData);
 
       setState(() {
         items = myData;
@@ -43,103 +44,30 @@ class _TabBarItemsState extends State<TabBarItems> {
     }
   }
 
+  void getFavs() async {
+    final user = await FirebaseAuth.instance.currentUser;
+    final userData = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user?.uid)
+        .get();
+    myFavs = userData['favoriteVids'];
+    print(myFavs);
+  }
+
   @override
   Widget build(BuildContext context) {
-    getVideos();
+    if (isInit) {
+      getVideos();
+      getFavs();
+      isInit = false;
+    }
 
     return Expanded(
       child: TabBarView(
         children: [
           // first tab bar view widget
-          Container(
-              color: Colors.white,
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 3 / 3,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                primary: false,
-                padding: const EdgeInsets.all(10),
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return Text('Video');
-                },
-              )),
-
-          // second tab bar viiew widget
-          Container(
-              color: Colors.white,
-              child: GridView.count(
-                primary: false,
-                padding: const EdgeInsets.all(10),
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 30,
-                crossAxisCount: 3,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(""),
-                    color: Colors.teal[100],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[200],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[300],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[400],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[500],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text(''),
-                    color: Colors.teal[600],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(""),
-                    color: Colors.teal[100],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[200],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[300],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[400],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    child: const Text(''),
-                    color: Colors.teal[500],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: const Text(''),
-                    color: Colors.teal[600],
-                  ),
-                ],
-              )),
+          MyVideos(items: items),
+          Favorite(myFavs: myFavs),
         ],
       ),
     );
