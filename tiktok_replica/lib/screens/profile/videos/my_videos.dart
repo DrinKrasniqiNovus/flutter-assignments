@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_replica/screens/fullscreen_video.dart';
+import 'package:tiktok_replica/screens/profile/videos/fullscreen_video.dart';
 import 'package:video_player/video_player.dart';
 import '../../getters/posts.dart';
 

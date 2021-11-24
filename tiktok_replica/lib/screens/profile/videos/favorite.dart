@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_replica/fullscreen2_video.dart';
+import 'package:tiktok_replica/screens/profile/videos/fullscreen2_video.dart';
 import 'package:video_player/video_player.dart';
 
 class Favorite extends StatelessWidget {

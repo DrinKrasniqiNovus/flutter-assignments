@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_replica/screens/video_post.dart';
+import 'package:tiktok_replica/screens/main_screens/video_post.dart';
 
 class HomeScreen extends StatefulWidget {
 

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:tiktok_replica/screens/favorite_button.dart';
+import 'package:tiktok_replica/screens/widgets/favorite_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
