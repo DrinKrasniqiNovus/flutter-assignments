@@ -8,6 +8,7 @@ class Post {
   final Timestamp timeStamp;
   final String videoUrl;
   final Map author;
+
   Post(
       {required this.author,
       required this.id,
