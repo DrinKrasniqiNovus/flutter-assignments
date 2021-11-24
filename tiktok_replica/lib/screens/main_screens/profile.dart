@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tiktok_replica/screens/getters/name.dart';
 import 'package:tiktok_replica/screens/getters/profile_picture.dart';
 import '../getters/username.dart';
-import '../widgets/user_image_picker.dart';
 import '../widgets/stats.dart';
 import '../widgets/edit_profile_button.dart';
 import '../widgets/tab_bar_items.dart';
@@ -27,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icon(Icons.exit_to_app),
             ),
           ],
-          title: Name(),
+          title: Text('My Profile'),
           centerTitle: true,
           backgroundColor: Colors.black,
           elevation: 10,
