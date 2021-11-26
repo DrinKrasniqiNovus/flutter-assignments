@@ -41,7 +41,8 @@ class MyVideos extends StatelessWidget {
                   ..initialize()
                   ..setVolume(0.0)
                   ..play()
-                  ..setLooping(true)),
+                  // ..setLooping(true)
+                  ),
           );
         },
       ),

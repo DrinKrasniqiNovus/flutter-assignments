@@ -55,12 +55,11 @@ class _FullScreen2State extends State<FullScreen2> {
                       Positioned.fill(
                         child: AspectRatio(
                           aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(
-                            _controller
-                              ..initialize()
-                              ..play()
-                              ..setLooping(true),
-                          ),
+                          child: VideoPlayer(_controller
+                                ..initialize()
+                                ..play()
+                              // ..setLooping(true),
+                              ),
                         ),
                       ),
                       Positioned(

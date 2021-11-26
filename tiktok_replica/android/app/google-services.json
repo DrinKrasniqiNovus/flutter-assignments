@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "832982487747",
-    "project_id": "novus-tiktok",
-    "storage_bucket": "novus-tiktok.appspot.com"
+    "project_number": "598584255986",
+    "project_id": "tiktok-7a74b",
+    "storage_bucket": "tiktok-7a74b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:832982487747:android:b6272544f3551a6c568876",
+        "mobilesdk_app_id": "1:598584255986:android:0b396491563ef61076776b",
         "android_client_info": {
-          "package_name": "com.example.tiktok_replica"
+          "package_name": "com.example.tiktok"
         }
       },
       "oauth_client": [
         {
-          "client_id": "832982487747-2sfl2rssg81fsehf4falbivi1pg7vi98.apps.googleusercontent.com",
+          "client_id": "598584255986-97k275uft5u1ve4u1745p7mtphd6d2cs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAcOWogLSIDxkY_S324MAZm4RPx9WNiL1c"
+          "current_key": "AIzaSyBYI8dZBrmvWul-F0MTC86tuWkIuT7U0vU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "832982487747-2sfl2rssg81fsehf4falbivi1pg7vi98.apps.googleusercontent.com",
+              "client_id": "598584255986-97k275uft5u1ve4u1745p7mtphd6d2cs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
