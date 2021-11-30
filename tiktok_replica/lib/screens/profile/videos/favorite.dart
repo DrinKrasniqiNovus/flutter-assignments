@@ -35,12 +35,10 @@ class Favorite extends StatelessWidget {
                 );
               },
               child: VideoPlayer(
-                  VideoPlayerController.network(myFavs[index] as String)
+                  VideoPlayerController.network(myFavs[index].toString())
                     ..initialize()
                     ..setVolume(0.0)
-                    ..play()
-                  // ..setLooping(true)
-                  ),
+                    ..play()),
             );
           },
         ));

@@ -46,22 +46,14 @@ class _FullScreenState extends State<FullScreen> {
                     VideoPlayerController _controller =
                         VideoPlayerController.network(
                             userDocs[index]['videoUrl']);
-                    VideoPlayer(
-                      _controller
-                        ..initialize()
-                        ..pause(),
-                    );
 
                     return Stack(children: [
                       Positioned.fill(
                         child: AspectRatio(
                           aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(
-                            _controller
-                              ..initialize()
-                              ..play()
-                              ..setLooping(true),
-                          ),
+                          child: VideoPlayer(_controller
+                            ..initialize()
+                            ..play()),
                         ),
                       ),
                       Positioned(

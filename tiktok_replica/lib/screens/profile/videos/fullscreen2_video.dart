@@ -44,12 +44,7 @@ class _FullScreen2State extends State<FullScreen2> {
                   itemBuilder: (ctx, index) {
                     VideoPlayerController _controller =
                         VideoPlayerController.network(
-                            userDocs[index]['favoriteVids'] as String);
-                    VideoPlayer(
-                      _controller
-                        ..initialize()
-                        ..pause(),
-                    );
+                            userDocs[index]['favoriteVids']);
 
                     return Stack(children: [
                       Positioned.fill(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_replica/screens/auth/resete_screen.dart';
 // import '/widgets/pickers/user_image_picker.dart';
 
 class AuthForm extends StatefulWidget {
@@ -123,16 +124,31 @@ class _AuthFormState extends State<AuthForm> {
                     ),
 
                   if (!widget.isLoading)
-                    FlatButton(
-                      textColor: Theme.of(context).primaryColor,
-                      onPressed: () {
-                        setState(() {
-                          _isLogin = !_isLogin;
-                        });
-                      },
-                      child: Text(_isLogin
-                          ? 'Create new account'
-                          : 'I already have an acconut'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FlatButton(
+                          textColor: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            setState(() {
+                              _isLogin = !_isLogin;
+                            });
+                          },
+                          child: Text(_isLogin ? 'Signup' : 'LogIn'),
+                        ),
+                        FlatButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResetPassword()),
+                              );
+                            },
+                            child: Text(
+                              'Forgot password',
+                              style: TextStyle(color: Colors.pink),
+                            ))
+                      ],
                     ),
                 ],
               ),
